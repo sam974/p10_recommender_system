@@ -9,9 +9,9 @@ import os
 app = Flask(__name__)
 
 # --- Chemins des fichiers ---
-DATA_FILE = "/content/drive/My Drive/Colab Notebooks/projet10/data/articles_embeddings_v2.pickle"
-ARTICLES_FILE = "/content/drive/My Drive/Colab Notebooks/projet10/data/articles_metadata.csv"
-CLICKS_FILE = "/content/drive/My Drive/Colab Notebooks/projet10/data/clicks_sample.csv"
+DATA_FILE = "data/articles_embeddings_v2.pickle"
+ARTICLES_FILE = "data/articles_metadata.csv"
+CLICKS_FILE = "data/clicks_sample.csv"
 
 # --- Chargement et Précalcul ---
 try:
