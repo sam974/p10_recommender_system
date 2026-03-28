@@ -15,13 +15,23 @@ pip install -r application/requirements.txt
 pip install -r flask-api/requirements.txt
 ```
 
+## Data
+
+This project requires the following data files to be present in the `flask-api/data` directory:
+
+*   `articles_embeddings_v2.pickle`
+*   `articles_metadata.csv`
+*   `clicks_sample.csv`
+
+You can download the data from the link provided in the notebook.
+
+**Note:** For a production environment, it is recommended to store these files in a cloud storage service like Azure Blob Storage and access them from the application.
+
 ## Usage
 
 ### 1. Run the Flask API
 
 The Flask API provides the recommendations. Before running the Streamlit application, you need to run the Flask API.
-
-**Important:** The Flask API in `flask-api/app.py` has hardcoded paths to data files. You will need to download the data from the link in the notebook and update the paths in `flask-api/app.py` before running the API.
 
 To run the Flask API, execute the following command:
 
@@ -47,3 +57,17 @@ To run the Streamlit application, execute the following command:
 ```bash
 streamlit run application/streamlit_app.py
 ```
+
+## Deployment
+
+This repository includes a GitHub Action to deploy the Flask API as an Azure Function.
+
+To use this action, you need to:
+
+1.  Create an Azure Function App.
+2.  Get the publish profile for your Function App.
+3.  Add the publish profile as a secret in your GitHub repository with the name `AZURE_FUNCTIONAPP_PUBLISH_PROFILE`.
+
+The workflow will then automatically deploy the API to your Azure Function App whenever you push to the `main` branch.
+
+**Important:** The deployment action will only deploy the code. You need to make sure that the data files are present in the `flask-api/data` directory before deploying.
