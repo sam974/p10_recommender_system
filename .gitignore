@@ -1,6 +1,6 @@
 # articles pickle and embeddings
-data
-
+flask-api/data/articles_embeddings_v2.pickle
+flask-api/data/pca_model.pickle
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

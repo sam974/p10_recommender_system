@@ -9,7 +9,8 @@ import os
 app = Flask(__name__)
 
 # --- Chemins des fichiers ---
-DATA_FILE = "data/articles_embeddings_v2.pickle"
+DATA_FILE = "data/articles_embeddings_reduced.pickle"
+PCA_MODEL_FILE = "data/pca_model.pickle"
 ARTICLES_FILE = "data/articles_metadata.csv"
 CLICKS_FILE = "data/clicks_sample.csv"
 
@@ -82,9 +83,7 @@ def recommend():
     return jsonify({"user_id": user_id, "method": method, "recommendations": recos_details})
 
 if __name__ == '__main__':
-    try:
-        from flask_ngrok import run_with_ngrok
-        run_with_ngrok(app)
-        app.run()
-    except:
-        app.run(host='0.0.0.0', port=5000)
+    # Lorsque déployé sur Azure App Service, le serveur Gunicorn démarrera l'application
+    # Pour le test local, décommenter la ligne suivante:
+    # app.run(host='0.0.0.0', port=8000, debug=True)
+    print("L'application Flask est configurée pour Azure App Service. Pour un test local, décommenter app.run()")
